@@ -1,16 +1,47 @@
-# React + Vite
+# Nikhil Mahesh - AI Engineer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, highly interactive portfolio showcasing expertise in AI, Machine Learning, and GenAI. Built with React, Vite, Tailwind CSS, and Framer Motion.
 
-Currently, two official plugins are available:
+## 🚀 Key Features
+- **Modern Aesthetics**: Glassmorphism, grainy gradients, and smooth micro-animations.
+- **Responsive Design**: Fully optimized for mobile, tablet, and desktop.
+- **AI-Focused**: Specialized sections for LLMs, NLP, and MLOps.
+- **Interactive Timeline**: Career journey visualization.
+- **Interactive Hero**: Dynamic background and typography.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
+- **Frontend**: React 19, Vite, Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Deployment**: Render (Blueprint included)
 
-## React Compiler
+## 📦 Deployment on Render
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This project includes a `render.yaml` blueprint. To deploy:
 
-## Expanding the ESLint configuration
+1. Push your code to a GitHub/GitLab/Bitbucket repository.
+2. Log in to [Render.com](https://render.com).
+3. Click "New" > "Blueprint".
+4. Connect your repository.
+5. Render will automatically configure the static site using the blueprint.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Manual Settings:**
+- **Build Command**: `npm install && npm run build`
+- **Publish Directory**: `dist`
+- **Node Version**: `20+`
+
+## ⌨️ Local Development
+
+```bash
+# Install dependencies
+npm install
+
+# Run dev server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## 📄 License
+MIT © Nikhil Mahesh

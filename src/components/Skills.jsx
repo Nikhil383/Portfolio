@@ -1,71 +1,102 @@
 import { motion } from 'framer-motion'
+import { Code2, BrainCircuit, MessageSquare, Database, Terminal, Cpu } from 'lucide-react'
 import Section from './Section.jsx'
 
 const categories = [
   {
     name: 'Languages',
-    items: ['Python', 'TypeScript / JavaScript', 'SQL'],
+    icon: Code2,
+    items: ['Python', 'TypeScript', 'JavaScript', 'SQL', 'C++'],
+    color: 'text-blue-400',
   },
   {
-    name: 'ML & DL',
-    items: ['PyTorch', 'TensorFlow', 'Scikit-learn'],
+    name: 'AI & Machine Learning',
+    icon: BrainCircuit,
+    items: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'Neural Networks'],
+    color: 'text-purple-400',
   },
   {
-    name: 'LLMs & NLP',
-    items: ['OpenAI / Azure OpenAI', 'Transformers (HF)', 'RAG, Vector DBs'],
+    name: 'GenAI & NLP',
+    icon: MessageSquare,
+    items: ['GPT-4 / Claude', 'Transformers', 'LangChain', 'RAG Systems'],
+    color: 'text-emerald-400',
   },
   {
-    name: 'MLOps & Infra',
-    items: ['Docker', 'FastAPI', 'LangChain / LlamaIndex'],
+    name: 'Data & Infra',
+    icon: Database,
+    items: ['PostgreSQL', 'ChromaDB', 'Pinecone', 'Redis'],
+    color: 'text-amber-400',
+  },
+  {
+    name: 'MLOps',
+    icon: Terminal,
+    items: ['Docker', 'AWS', 'Kubernetes', 'FastAPI'],
+    color: 'text-rose-400',
+  },
+  {
+    name: 'Tools',
+    icon: Cpu,
+    items: ['Git', 'VS Code', 'Jupyter', 'Weights & Biases'],
+    color: 'text-cyan-400',
   },
 ]
 
-const listVariants = {
-  hidden: {},
+const containerVariants = {
+  hidden: { opacity: 0 },
   visible: {
+    opacity: 1,
     transition: {
-      staggerChildren: 0.08,
+      staggerChildren: 0.1,
     },
   },
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { type: 'spring', stiffness: 100 }
+  },
 }
 
 export default function Skills() {
   return (
     <Section
       id="skills"
-      title="Skills"
-      eyebrow="Capabilities"
+      title="Expertise"
+      eyebrow="Technical Stack"
     >
       <motion.div
-        className="grid gap-4 md:grid-cols-2"
-        variants={listVariants}
+        className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.2 }}
       >
         {categories.map((category) => (
           <motion.div
             key={category.name}
             variants={itemVariants}
-            className="rounded-2xl border border-slate-800 bg-slate-950/60 p-4"
+            className="group glass-card overflow-hidden rounded-3xl p-6"
           >
-            <h3 className="mb-2 text-sm font-semibold text-white">{category.name}</h3>
-            <ul className="space-y-1 text-xs text-slate-300 sm:text-sm">
+            <div className="mb-4 flex items-center gap-3">
+              <div className={`rounded-xl bg-slate-900/50 p-2.5 ${category.color}`}>
+                <category.icon className="h-5 w-5" />
+              </div>
+              <h3 className="text-lg font-heading font-bold text-white">{category.name}</h3>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
               {category.items.map((item) => (
-                <li
+                <span
                   key={item}
-                  className="flex items-center gap-2"
+                  className="rounded-full bg-slate-800/40 px-3 py-1 text-xs font-medium text-slate-300 transition-colors group-hover:bg-slate-800 group-hover:text-white"
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                  <span>{item}</span>
-                </li>
+                  {item}
+                </span>
               ))}
-            </ul>
+            </div>
           </motion.div>
         ))}
       </motion.div>

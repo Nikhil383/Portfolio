@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, X, Cpu, Github, Linkedin, Mail } from 'lucide-react'
+import { cn } from '../lib/utils'
 
 const sections = [
   { id: 'hero', label: 'Home' },
@@ -12,9 +15,11 @@ const sections = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [active, setActive] = useState('hero')
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
       const scrollPosition = window.scrollY + 120
 
       for (const section of sections) {
@@ -42,71 +47,112 @@ export default function Navbar() {
   }
 
   return (
-    <header className="fixed inset-x-0 top-0 z-30 border-b border-slate-800 bg-surface/80 backdrop-blur">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300 px-4 py-4 sm:px-6 lg:px-8",
+        scrolled ? "top-2" : "top-0"
+      )}
+    >
+      <nav className={cn(
+        "mx-auto flex max-w-5xl items-center justify-between px-6 py-3 transition-all duration-300",
+        scrolled ? "glass rounded-full shadow-lg shadow-black/20" : "bg-transparent"
+      )}>
         <button
           type="button"
           onClick={() => handleNavClick('hero')}
-          className="text-lg font-semibold tracking-tight text-white"
+          className="flex items-center gap-2 text-xl font-heading font-bold tracking-tight text-white group"
         >
-          AI Engineer<span className="text-accent">.</span>
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20 text-primary transition-transform group-hover:scale-110">
+            <Cpu className="h-5 w-5" />
+          </div>
+          <span className="hidden sm:inline-block">Nikhil<span className="text-primary">.</span></span>
         </button>
 
-        <div className="hidden items-center gap-6 md:flex">
+        {/* Desktop Nav */}
+        <div className="hidden items-center gap-1 md:flex">
           {sections.map((section) => (
             <button
               key={section.id}
               type="button"
               onClick={() => handleNavClick(section.id)}
-              className={`text-sm font-medium transition-colors ${
+              className={cn(
+                "relative px-3 py-1.5 text-sm font-medium transition-colors rounded-full",
                 active === section.id
-                  ? 'text-accent'
-                  : 'text-slate-300 hover:text-white'
-              }`}
+                  ? "text-primary bg-primary/10"
+                  : "text-slate-400 hover:text-white"
+              )}
             >
               {section.label}
+              {active === section.id && (
+                <motion.div
+                  layoutId="active-pill"
+                  className="absolute inset-0 rounded-full bg-primary/10 -z-10"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
             </button>
           ))}
         </div>
 
-        <button
-          type="button"
-          className="inline-flex items-center justify-center rounded-md border border-slate-700 px-3 py-1.5 text-xs font-medium text-slate-100 hover:border-accent hover:text-accent md:text-sm"
-          onClick={() => handleNavClick('contact')}
-        >
-          Contact
-        </button>
+        <div className="flex items-center gap-3">
+          <div className="hidden items-center gap-2 border-r border-slate-700/50 pr-3 sm:flex">
+            <a href="#" className="p-1.5 text-slate-400 transition-colors hover:text-primary">
+              <Github className="h-4 w-4" />
+            </a>
+            <a href="#" className="p-1.5 text-slate-400 transition-colors hover:text-primary">
+              <Linkedin className="h-4 w-4" />
+            </a>
+          </div>
 
-        <button
-          type="button"
-          className="ml-3 inline-flex items-center justify-center rounded-md border border-slate-700 p-2 text-slate-100 hover:border-accent hover:text-accent md:hidden"
-          onClick={() => setIsOpen((prev) => !prev)}
-          aria-label="Toggle navigation"
-        >
-          <span className="h-0.5 w-5 bg-current" />
-        </button>
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-1.5 text-sm font-semibold text-primary-foreground shadow-sm transition hover:opacity-90 active:scale-95"
+            onClick={() => handleNavClick('contact')}
+          >
+            Hire Me
+          </button>
+
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-full p-2 text-slate-100 hover:bg-slate-800 md:hidden"
+            onClick={() => setIsOpen((prev) => !prev)}
+            aria-label="Toggle navigation"
+          >
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </nav>
 
-      {isOpen && (
-        <div className="border-t border-slate-800 bg-surface/95 px-4 py-3 sm:px-6 md:hidden">
-          <div className="flex flex-col gap-2">
-            {sections.map((section) => (
-              <button
-                key={section.id}
-                type="button"
-                onClick={() => handleNavClick(section.id)}
-                className={`rounded-md px-2 py-1 text-left text-sm font-medium ${
-                  active === section.id
-                    ? 'bg-slate-800 text-accent'
-                    : 'text-slate-200 hover:bg-slate-900'
-                }`}
-              >
-                {section.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+      {/* Mobile Nav */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute inset-x-4 top-20 z-50 overflow-hidden rounded-3xl glass p-4 shadow-2xl md:hidden"
+          >
+            <div className="flex flex-col gap-1">
+              {sections.map((section) => (
+                <button
+                  key={section.id}
+                  type="button"
+                  onClick={() => handleNavClick(section.id)}
+                  className={cn(
+                    "flex items-center justify-between rounded-xl px-4 py-3 text-left text-base font-medium transition-all active:scale-[0.98]",
+                    active === section.id
+                      ? "bg-primary/20 text-primary"
+                      : "text-slate-300 hover:bg-slate-800/50"
+                  )}
+                >
+                  {section.label}
+                  {active === section.id && <div className="h-1.5 w-1.5 rounded-full bg-primary" />}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

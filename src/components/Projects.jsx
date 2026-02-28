@@ -1,27 +1,38 @@
 import { motion } from 'framer-motion'
+import { ExternalLink, Github, FolderOpen, Layers, Bot, Image as ImageIcon, Search } from 'lucide-react'
 import Section from './Section.jsx'
+import { cn } from '../lib/utils'
 
 const projects = [
   {
     title: 'VQA (Visual Question Answering)',
-    period: '2024-present',
+    period: '2024-Present',
     description:
-      'A model that can answer questions about images using a combination of vision and language models.',
+      'Engineered a multi-modal transformer system capable of reasoned answering about visual content, bridging computer vision and NLP.',
     tech: ['Python', 'PyTorch', 'Hugging Face', 'Transformers'],
+    icon: Bot,
+    color: 'from-blue-500/20 to-cyan-500/20',
+    link: '#',
   },
   {
-    title: 'Image Captioning',
-    period: '2024-present',
+    title: 'Visual Semantic Analysis',
+    period: '2024-Present',
     description:
-      'A model that can generate captions for images using a combination of vision and language models.',
+      'Developed an automated image captioning system utilizing Azure OpenAI and LangChain for rich semantic description generation.',
     tech: ['Python', 'LangChain', 'Vector DB', 'Azure OpenAI'],
+    icon: ImageIcon,
+    color: 'from-purple-500/20 to-pink-500/20',
+    link: '#',
   },
   {
-    title: 'RAG Web App Question Answering',
-    period: '2024-present',
+    title: 'Enterprise RAG Solution',
+    period: '2024-Present',
     description:
-      'A web app that can answer questions about a given document using a combination of RAG and LLM.',
-    tech: ['Python', 'LangChain', 'RAG', 'LLM'],
+      'Designed and deployed a Retrieval-Augmented Generation web application for high-precision document interrogation and summary.',
+    tech: ['React', 'Python', 'FastAPI', 'ChromaDB', 'LLM'],
+    icon: Search,
+    color: 'from-emerald-500/20 to-teal-500/20',
+    link: '#',
   },
 ]
 
@@ -29,51 +40,81 @@ const listVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.15,
     },
   },
 }
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 80,
+      damping: 15
+    }
+  },
 }
 
 export default function Projects() {
   return (
     <Section
       id="projects"
-      title="Projects"
-      eyebrow="Selected Work"
+      title="Featured Work"
+      eyebrow="My Portfolio"
     >
       <motion.div
-        className="grid gap-5 md:grid-cols-3"
+        className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
         variants={listVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.25 }}
+        viewport={{ once: true, amount: 0.2 }}
       >
         {projects.map((project) => (
           <motion.article
             key={project.title}
             variants={cardVariants}
-            whileHover={{ y: -6, scale: 1.01 }}
-            transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-            className="group flex flex-col rounded-2xl border border-slate-800 bg-slate-950/60 p-4 shadow-sm shadow-slate-950/40"
+            className="group glass-card flex flex-col overflow-hidden rounded-3xl p-6"
           >
-            <div className="mb-2 flex items-center justify-between text-xs text-slate-400">
-              <span>{project.period}</span>
-              <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald-300">
-                AI project
-              </span>
+            {/* Project Header */}
+            <div className="mb-6 flex items-start justify-between">
+              <div className={cn(
+                "flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br transition-shadow group-hover:shadow-lg group-hover:shadow-primary/20",
+                project.color
+              )}>
+                <project.icon className="h-6 w-6 text-white" />
+              </div>
+              <div className="flex gap-2">
+                <a href={project.link} className="rounded-full bg-slate-800 p-2 text-slate-400 transition-colors hover:bg-slate-700 hover:text-white">
+                  <Github className="h-4 w-4" />
+                </a>
+                <a href={project.link} className="rounded-full bg-slate-800 p-2 text-slate-400 transition-colors hover:bg-slate-700 hover:text-white">
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+              </div>
             </div>
-            <h3 className="mb-2 text-sm font-semibold text-white">{project.title}</h3>
-            <p className="mb-3 text-xs text-slate-300 sm:text-sm">{project.description}</p>
-            <div className="mt-auto flex flex-wrap gap-1.5">
+
+            {/* Content */}
+            <div className="flex-1">
+              <div className="mb-2 text-xs font-medium text-primary uppercase tracking-wider">
+                {project.period}
+              </div>
+              <h3 className="mb-3 text-xl font-heading font-bold text-white group-hover:text-primary transition-colors">
+                {project.title}
+              </h3>
+              <p className="mb-6 text-sm leading-relaxed text-slate-400">
+                {project.description}
+              </p>
+            </div>
+
+            {/* Footer / Tech */}
+            <div className="mt-auto flex flex-wrap gap-2 pt-4 border-t border-slate-800/50">
               {project.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-full border border-slate-700 bg-slate-900/60 px-2 py-0.5 text-[11px] text-slate-200 group-hover:border-accent/80"
+                  className="rounded-lg bg-slate-900/50 px-2.5 py-1 text-[11px] font-medium text-slate-300 border border-slate-800"
                 >
                   {tech}
                 </span>
