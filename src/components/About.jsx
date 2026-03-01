@@ -68,9 +68,14 @@ export default function About() {
                 ))}
               </div>
 
-              <button className="mt-4 w-full rounded-2xl bg-white/5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 active:scale-[0.98]">
+              <a
+                href="#"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 block w-full rounded-2xl bg-white/5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-white/10 active:scale-[0.98]"
+              >
                 Download Resume PDF
-              </button>
+              </a>
             </div>
           </div>
 

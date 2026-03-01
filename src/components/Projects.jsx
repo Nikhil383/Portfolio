@@ -12,27 +12,41 @@ const projects = [
     tech: ['Python', 'PyTorch', 'Hugging Face', 'Transformers'],
     icon: Bot,
     color: 'from-blue-500/20 to-cyan-500/20',
-    link: '#',
+    github: 'https://github.com/Nikhil383/Multimodal_ai.git',
+    demo: 'https://multimodal-ai-50ad.onrender.com',
   },
   {
-    title: 'Visual Semantic Analysis',
+    title: 'Multimodal Image Captioning Engine',
     period: '2024-Present',
     description:
       'Developed an automated image captioning system utilizing Azure OpenAI and LangChain for rich semantic description generation.',
     tech: ['Python', 'LangChain', 'Vector DB', 'Azure OpenAI'],
     icon: ImageIcon,
     color: 'from-purple-500/20 to-pink-500/20',
-    link: '#',
+    github: 'https://github.com/Nikhil383/Image-Caption.git',
+    demo: 'https://image-caption-ejph.onrender.com',
   },
   {
-    title: 'Enterprise RAG Solution',
+    title: 'Agentic RAG Document Q&A App',
     period: '2024-Present',
     description:
       'Designed and deployed a Retrieval-Augmented Generation web application for high-precision document interrogation and summary.',
     tech: ['React', 'Python', 'FastAPI', 'ChromaDB', 'LLM'],
     icon: Search,
     color: 'from-emerald-500/20 to-teal-500/20',
-    link: '#',
+    github: 'https://github.com/Nikhil383/RAG-Document-Q-A-App.git',
+    demo: '#',
+  },
+  {
+    title: 'Personal AI Data Analyst',
+    period: '2024-Present',
+    description:
+      'Designed and deployed a Personal AI Data Analyst web application for high-precision data analysis and visualization.',
+    tech: ['React', 'Python', 'FastAPI', 'Pandas', 'Matplotlib'],
+    icon: Search,
+    color: 'from-emerald-500/20 to-teal-500/20',
+    github: 'https://github.com/Nikhil383/Personal-AI-Data-Analyst.git',
+    demo: '#',
   },
 ]
 
@@ -87,12 +101,28 @@ export default function Projects() {
                 <project.icon className="h-6 w-6 text-white" />
               </div>
               <div className="flex gap-2">
-                <a href={project.link} className="rounded-full bg-slate-800 p-2 text-slate-400 transition-colors hover:bg-slate-700 hover:text-white">
-                  <Github className="h-4 w-4" />
-                </a>
-                <a href={project.link} className="rounded-full bg-slate-800 p-2 text-slate-400 transition-colors hover:bg-slate-700 hover:text-white">
-                  <ExternalLink className="h-4 w-4" />
-                </a>
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-full bg-slate-800 p-2 text-slate-400 transition-colors hover:bg-slate-700 hover:text-white"
+                    title="View Source on GitHub"
+                  >
+                    <Github className="h-4 w-4" />
+                  </a>
+                )}
+                {project.demo && project.demo !== '#' && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-full bg-slate-800 p-2 text-slate-400 transition-colors hover:bg-slate-700 hover:text-white"
+                    title="View Live Demo"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                )}
               </div>
             </div>
 

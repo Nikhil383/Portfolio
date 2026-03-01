@@ -96,10 +96,10 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <div className="hidden items-center gap-2 border-r border-slate-700/50 pr-3 sm:flex">
-            <a href="#" className="p-1.5 text-slate-400 transition-colors hover:text-primary">
+            <a href="https://github.com/Nikhil383" className="p-1.5 text-slate-400 transition-colors hover:text-primary">
               <Github className="h-4 w-4" />
             </a>
-            <a href="#" className="p-1.5 text-slate-400 transition-colors hover:text-primary">
+            <a href="https://www.linkedin.com/in/nikhilmaheshds/" className="p-1.5 text-slate-400 transition-colors hover:text-primary">
               <Linkedin className="h-4 w-4" />
             </a>
           </div>

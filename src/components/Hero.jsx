@@ -103,10 +103,8 @@ export default function Hero() {
           variants={item}
         >
           {[
-            { label: "Experience", value: "3+ Years" },
-            { label: "Projects", value: "20+ Done" },
-            { label: "Accuracy", value: "99.9%" },
-            { label: "Coffee", value: "∞ Cups" },
+            { label: "Experience", value: "0.6 Years" },
+            { label: "Projects", value: "3+ Done" },
           ].map((stat, i) => (
             <div key={i} className="flex flex-col gap-1">
               <span className="text-2xl font-bold text-white">{stat.value}</span>
