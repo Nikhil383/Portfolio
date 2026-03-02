@@ -11,7 +11,7 @@ const roles = [
     bullets: [
       'Engineered a cutting-edge Visual Question Answering (VQA) system integrating ViT and LLM architectures.',
       'Developed automated image captioning pipelines for industrial monitoring scenarios.',
-      'Collaborated with senior researchers to optimize multi-modal model inference speed.',
+      'Implemented a multi-modal model for industrial monitoring scenarios.',
     ],
   },
 ]
