@@ -4,15 +4,15 @@ import Section from './Section.jsx'
 
 const categories = [
   {
-    name: 'Languages',
+    name: ' Programming and Tools',
     icon: Code2,
-    items: ['Python', 'TypeScript', 'JavaScript', 'SQL', 'C++'],
+    items: ['Python', 'Matplotlib, Seaborn, Plotly', 'SQL', 'Git', 'Cursor', 'Jupyter'],
     color: 'text-blue-400',
   },
   {
     name: 'AI & Machine Learning',
     icon: BrainCircuit,
-    items: ['PyTorch', 'TensorFlow', 'Scikit-learn', 'Neural Networks'],
+    items: ['Supervised & Unsupervised', 'Semi-Supervised', 'Reinforcement'],
     color: 'text-purple-400',
   },
   {
