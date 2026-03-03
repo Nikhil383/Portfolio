@@ -64,8 +64,7 @@ export default function Hero() {
           variants={item}
           className="mb-10 max-w-2xl text-lg text-slate-400 sm:text-xl lg:text-2xl"
         >
-          Architecting the future with <span className="text-white font-medium">Large Language Models</span> and
-          <span className="text-white font-medium"> Generative AI</span>. Turning complex data into intelligent experiences.
+           I design and build end-to-end AI systems using Machine Learning, Deep Learning, and Generative AI. Passionate about solving real-world problems using data-driven and AI-powered solutions.
         </motion.p>
 
         <motion.div
