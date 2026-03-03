@@ -113,7 +113,6 @@ export default function Contact() {
                 placeholder="Enter email"
                 className="rounded-xl border border-slate-700 bg-slate-900/50 px-4 py-3 text-sm text-white outline-none transition focus:border-primary focus:ring-1 focus:ring-primary"
               />
-              <p className="text-[10px] text-slate-500">The message will be sent to this address.</p>
             </div>
           </div>
 
