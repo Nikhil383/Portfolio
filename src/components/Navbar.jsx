@@ -65,7 +65,7 @@ export default function Navbar() {
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20 text-primary transition-transform group-hover:scale-110">
             <Cpu className="h-5 w-5" />
           </div>
-          <span className="hidden sm:inline-block">Nikhil<span className="text-primary">.</span></span>
+          <span className="hidden sm:inline-block">Nikhil<span className="text-primary"> Mahesh</span></span>
         </button>
 
         {/* Desktop Nav */}

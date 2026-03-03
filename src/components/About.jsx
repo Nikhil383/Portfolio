@@ -69,12 +69,12 @@ export default function About() {
               </div>
 
               <a
-                href="#"
+                href="https://docs.google.com/document/d/1x2bC3BnoxFD0whm1eHkz2zlWMmXn72McfxMUJlWJfiI/edit?usp=sharing"
                 target="_blank"
                 rel="noreferrer"
                 className="mt-4 block w-full rounded-2xl bg-white/5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-white/10 active:scale-[0.98]"
               >
-                Download Resume PDF
+                Resume 
               </a>
             </div>
           </div>

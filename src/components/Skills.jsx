@@ -1,42 +1,48 @@
 import { motion } from 'framer-motion'
-import { Code2, BrainCircuit, MessageSquare, Database, Terminal, Cpu } from 'lucide-react'
+import { Code2, BrainCircuit, MessageSquare, Database, Terminal, Cpu, Eye, Layers, Rocket } from 'lucide-react'
 import Section from './Section.jsx'
 
 const categories = [
   {
-    name: ' Programming and Tools',
-    icon: Code2,
-    items: ['Python', 'Matplotlib, Seaborn, Plotly', 'SQL', 'Git', 'Cursor', 'Jupyter'],
-    color: 'text-blue-400',
-  },
-  {
-    name: 'AI & Machine Learning',
+    name: 'AI & Machine Learning Foundations',
     icon: BrainCircuit,
-    items: ['Supervised & Unsupervised', 'Semi-Supervised', 'Reinforcement'],
+    items: ['Supervised & Unsupervised Learning', 'Bias-Variance Tradeoff', 'Model Evaluation (ROC, AUC)', 'Feature Engineering', 'Cross-validation', 'Hyperparameter Tuning', 'Statistical Foundations'],
     color: 'text-purple-400',
   },
   {
-    name: 'GenAI & NLP',
+    name: 'Deep Learning',
+    icon: Layers,
+    items: ['Neural Networks (ANN)', 'CNN (Computer Vision)', 'RNN, LSTM', 'Transformers', 'Attention Mechanism', 'Transfer Learning', 'Fine-tuning models'],
+    color: 'text-indigo-400',
+  },
+  {
+    name: 'Generative AI & LLMs',
     icon: MessageSquare,
-    items: ['GPT-4 / Claude', 'Transformers', 'LangChain', 'RAG Systems'],
+    items: ['Large Language Models (LLMs)', 'Prompt Engineering', 'RAG Systems', 'Embeddings', 'Vector Databases', 'Multi-modal AI', 'Image Captioning & VQA'],
     color: 'text-emerald-400',
   },
   {
-    name: 'Data & Infra',
-    icon: Database,
-    items: ['PostgreSQL', 'ChromaDB', 'Pinecone', 'Redis'],
+    name: 'Computer Vision',
+    icon: Eye,
+    items: ['Image Classification', 'Object Detection', 'Feature Extraction', 'Vision Transformers (ViT)'],
+    color: 'text-blue-400',
+  },
+  {
+    name: 'AI System Development',
+    icon: Cpu,
+    items: ['End-to-End ML Pipeline Design', 'Model Training & Evaluation', 'Data Preprocessing', 'Experiment Tracking', 'Scalable Code Design'],
     color: 'text-amber-400',
   },
   {
-    name: 'MLOps',
-    icon: Terminal,
-    items: ['Docker', 'AWS', 'Kubernetes', 'FastAPI'],
+    name: 'Deployment & MLOps',
+    icon: Rocket,
+    items: ['Flask API Deployment', 'Model Serialization', 'Git & Version Control', 'Basic CI/CD', 'Cloud Concepts (AWS/GCP)'],
     color: 'text-rose-400',
   },
   {
-    name: 'Tools',
-    icon: Cpu,
-    items: ['Git', 'VS Code', 'Jupyter', 'Weights & Biases'],
+    name: 'Programming & Tools',
+    icon: Terminal,
+    items: ['Python', 'NumPy, Pandas', 'Matplotlib / Seaborn', 'VS Code', 'Linux Basics', 'LangChain', 'Hugging Face', 'Docker', 'FAISS / Pinecone'],
     color: 'text-cyan-400',
   },
 ]

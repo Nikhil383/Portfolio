@@ -8,8 +8,8 @@ const projects = [
     title: 'VQA (Visual Question Answering)',
     period: '2024-Present',
     description:
-      'Engineered a multi-modal transformer system capable of reasoned answering about visual content, bridging computer vision and NLP.',
-    tech: ['Python', 'PyTorch', 'Hugging Face', 'Transformers'],
+      'Developed a system that answers natural language questions based on image content.',
+    tech: ['Python', 'PyTorch', 'Hugging Face', 'Transformers', 'Gemini'],
     icon: Bot,
     color: 'from-blue-500/20 to-cyan-500/20',
     github: 'https://github.com/Nikhil383/Multimodal_ai.git',
@@ -19,8 +19,8 @@ const projects = [
     title: 'Multimodal Image Captioning Engine',
     period: '2024-Present',
     description:
-      'Developed an automated image captioning system utilizing Azure OpenAI and LangChain for rich semantic description generation.',
-    tech: ['Python', 'LangChain', 'Vector DB', 'Azure OpenAI'],
+      'Built an end-to-end image captioning system that generates natural language descriptions from images.',
+    tech: ['Python', 'LangChain', 'Gemini AI'],
     icon: ImageIcon,
     color: 'from-purple-500/20 to-pink-500/20',
     github: 'https://github.com/Nikhil383/Image-Caption.git',
@@ -30,7 +30,7 @@ const projects = [
     title: 'Agentic RAG Document Q&A App',
     period: '2024-Present',
     description:
-      'Designed and deployed a Retrieval-Augmented Generation web application for high-precision document interrogation and summary.',
+      'Built a RAG-based Q&A system that answers questions about documents using AI.',
     tech: ['React', 'Python', 'FastAPI', 'ChromaDB', 'LLM'],
     icon: Search,
     color: 'from-emerald-500/20 to-teal-500/20',

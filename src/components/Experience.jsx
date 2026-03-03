@@ -9,9 +9,11 @@ const roles = [
     location: 'Remote / Bangalore',
     period: 'Feb 2024 — July 2024',
     bullets: [
-      'Engineered a cutting-edge Visual Question Answering (VQA) system integrating ViT and LLM architectures.',
-      'Developed automated image captioning pipelines for industrial monitoring scenarios.',
-      'Implemented a multi-modal model for industrial monitoring scenarios.',
+      'Built a backend analytics and automation platform using Django, enabling scalable data-driven SaaS workflows.',
+      'Automated SQL, ETL, and reporting pipelines, reducing manual effort by 70% across business teams.',
+      'Designed APIs for data ingestion and processing, improving system reliability and extensibility.',
+      'Engineered ML-ready datasets and anomaly detection prototypes, improving data readiness by 30%.',
+      'Collaborated with product and engineering teams to iterate rapidly on backend features.',
     ],
   },
 ]

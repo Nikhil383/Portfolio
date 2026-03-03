@@ -50,7 +50,7 @@ export default function Hero() {
           className="mb-8 flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary shadow-sm backdrop-blur-sm"
         >
           <Sparkles className="h-3 w-3" />
-          <span>Portfolio 2026</span>
+          <span>Portfolio</span>
         </motion.div>
 
         <motion.h1
