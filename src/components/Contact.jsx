@@ -17,7 +17,7 @@ export default function Contact() {
       // Replace with your actual EmailJS credentials
       await emailjs.sendForm(
         'service_t9jknwj',
-        'template_m61e4f1',
+        'template_ugckyeo',
         form.current,
         'kkEP75ET7msBd4V2h'
       )
@@ -113,6 +113,7 @@ export default function Contact() {
                 placeholder="Enter email"
                 className="rounded-xl border border-slate-700 bg-slate-900/50 px-4 py-3 text-sm text-white outline-none transition focus:border-primary focus:ring-1 focus:ring-primary"
               />
+              <p className="text-[10px] text-slate-500">The message will be sent to this address.</p>
             </div>
           </div>
 
@@ -132,10 +133,10 @@ export default function Contact() {
             type="submit"
             disabled={isSending}
             className={`group flex items-center justify-center gap-2 rounded-xl py-4 text-sm font-bold shadow-lg transition-all active:scale-[0.98] ${status === 'success'
-                ? 'bg-emerald-500 text-white shadow-emerald-500/20'
-                : status === 'error'
-                  ? 'bg-rose-500 text-white shadow-rose-500/20'
-                  : 'bg-primary text-primary-foreground shadow-primary/20 hover:opacity-90'
+              ? 'bg-emerald-500 text-white shadow-emerald-500/20'
+              : status === 'error'
+                ? 'bg-rose-500 text-white shadow-rose-500/20'
+                : 'bg-primary text-primary-foreground shadow-primary/20 hover:opacity-90'
               } disabled:opacity-70`}
           >
             {isSending ? (
