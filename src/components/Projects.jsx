@@ -12,7 +12,7 @@ const projects = [
     tech: ['Python', 'PyTorch', 'Hugging Face', 'Transformers', 'Gemini'],
     icon: Bot,
     color: 'from-blue-500/20 to-cyan-500/20',
-    github: 'https://github.com/Nikhil383/Multimodal_ai.git',
+    github: 'https://github.com/Nikhil383/Visual_Question_Answer.git',
     demo: 'https://multimodal-ai-50ad.onrender.com',
   },
   {
