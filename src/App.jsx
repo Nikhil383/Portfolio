@@ -70,9 +70,7 @@ function App() {
             <p className="text-xs text-slate-500">
               &copy; {new Date().getFullYear()} Nikhil Mahesh. All rights reserved.
             </p>
-            <p className="flex items-center gap-1 text-xs text-slate-500">
-              Designed with <Heart className="h-3 w-3 text-red-500 fill-current" /> by Antigravity AI
-            </p>
+
           </div>
         </div>
       </footer>
