@@ -9,7 +9,7 @@ const projects = [
     period: '2024-Present',
     description:
       'Developed a system that answers natural language questions based on image content.',
-    tech: ['Python', 'PyTorch', 'Hugging Face', 'Transformers', 'Gemini'],
+    tech: ['Python', 'PyTorch', 'Hugging Face', 'Transformers', 'Gemini','Flask'],
     icon: Bot,
     color: 'from-blue-500/20 to-cyan-500/20',
     github: 'https://github.com/Nikhil383/Visual_Question_Answer.git',
@@ -20,7 +20,7 @@ const projects = [
     period: '2024-Present',
     description:
       'Built an end-to-end image captioning system that generates natural language descriptions from images.',
-    tech: ['Python', 'LangChain', 'Gemini AI'],
+    tech: ['Python', 'LangChain', 'Gemini AI','Flask'],
     icon: ImageIcon,
     color: 'from-purple-500/20 to-pink-500/20',
     github: 'https://github.com/Nikhil383/Image-Caption.git',
@@ -42,7 +42,7 @@ const projects = [
     period: '2024-Present',
     description:
       'Designed and deployed a Personal AI Data Analyst web application for high-precision data analysis and visualization.',
-    tech: ['React', 'Python', 'FastAPI', 'Pandas', 'Matplotlib'],
+    tech: ['Streamlit', 'Python', 'Pandas', 'Matplotlib'],
     icon: Search,
     color: 'from-emerald-500/20 to-teal-500/20',
     github: 'https://github.com/Nikhil383/Personal-AI-Data-Analyst.git',
