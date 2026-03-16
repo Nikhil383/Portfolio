@@ -94,13 +94,18 @@ export default function Skills() {
             </div>
 
             <div className="flex flex-wrap gap-2">
-              {category.items.map((item) => (
-                <span
+              {category.items.map((item, idx) => (
+                <motion.span
                   key={item}
-                  className="rounded-full bg-slate-800/40 px-3 py-1 text-xs font-medium text-slate-300 transition-colors group-hover:bg-slate-800 group-hover:text-white"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.03 }}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="rounded-full bg-slate-800/40 px-3 py-1 text-xs font-medium text-slate-300 transition-colors group-hover:bg-slate-800 group-hover:text-white cursor-default"
                 >
                   {item}
-                </span>
+                </motion.span>
               ))}
             </div>
           </motion.div>

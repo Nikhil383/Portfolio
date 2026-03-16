@@ -140,16 +140,21 @@ export default function Projects() {
             </div>
 
             {/* Footer / Tech */}
-            <div className="mt-auto flex flex-wrap gap-2 pt-4 border-t border-slate-800/50">
-              {project.tech.map((tech) => (
-                <span
+            <motion.div className="mt-auto flex flex-wrap gap-2 pt-4 border-t border-slate-800/50">
+              {project.tech.map((tech, idx) => (
+                <motion.span
                   key={tech}
-                  className="rounded-lg bg-slate-900/50 px-2.5 py-1 text-[11px] font-medium text-slate-300 border border-slate-800"
+                  initial={{ opacity: 0, y: 5 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.05 }}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="rounded-lg bg-slate-900/50 px-2.5 py-1 text-[11px] font-medium text-slate-300 border border-slate-800 cursor-default"
                 >
                   {tech}
-                </span>
+                </motion.span>
               ))}
-            </div>
+            </motion.div>
           </motion.article>
         ))}
       </motion.div>

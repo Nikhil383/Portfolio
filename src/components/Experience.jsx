@@ -66,10 +66,28 @@ export default function Experience() {
 
                   <ul className="space-y-3">
                     {role.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex gap-3 text-sm leading-relaxed text-slate-400">
-                        <div className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary/40" />
+                      <motion.li
+                        key={bIdx}
+                        className="flex gap-3 text-sm leading-relaxed text-slate-400"
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: bIdx * 0.1 }}
+                      >
+                        <motion.div
+                          className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary/40"
+                          animate={{
+                            scale: [1, 1.5, 1],
+                            opacity: [0.4, 0.8, 0.4],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: bIdx * 0.2,
+                          }}
+                        />
                         <span>{bullet}</span>
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </div>

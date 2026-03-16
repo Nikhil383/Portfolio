@@ -53,25 +53,36 @@ export default function Navbar() {
         scrolled ? "top-2" : "top-0"
       )}
     >
-      <nav className={cn(
-        "mx-auto flex max-w-5xl items-center justify-between px-6 py-3 transition-all duration-300",
-        scrolled ? "glass rounded-full shadow-lg shadow-black/20" : "bg-transparent"
-      )}>
-        <button
+      <motion.nav
+        className={cn(
+          "mx-auto flex max-w-5xl items-center justify-between px-6 py-3 transition-all duration-300",
+          scrolled ? "glass rounded-full shadow-lg shadow-black/20" : "bg-transparent"
+        )}
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 100, damping: 20 }}
+      >
+        <motion.button
           type="button"
           onClick={() => handleNavClick('hero')}
           className="flex items-center gap-2 text-xl font-heading font-bold tracking-tight text-white group"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20 text-primary transition-transform group-hover:scale-110">
+          <motion.div
+            className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/20 text-primary"
+            whileHover={{ rotate: 360 }}
+            transition={{ duration: 0.5 }}
+          >
             <Cpu className="h-5 w-5" />
-          </div>
+          </motion.div>
           <span className="hidden sm:inline-block">Nikhil<span className="text-primary"> Mahesh</span></span>
-        </button>
+        </motion.button>
 
         {/* Desktop Nav */}
         <div className="hidden items-center gap-1 md:flex">
           {sections.map((section) => (
-            <button
+            <motion.button
               key={section.id}
               type="button"
               onClick={() => handleNavClick(section.id)}
@@ -81,6 +92,8 @@ export default function Navbar() {
                   ? "text-primary bg-primary/10"
                   : "text-slate-400 hover:text-white"
               )}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               {section.label}
               {active === section.id && (
@@ -90,7 +103,7 @@ export default function Navbar() {
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
-            </button>
+            </motion.button>
           ))}
         </div>
 
@@ -121,7 +134,7 @@ export default function Navbar() {
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Mobile Nav */}
       <AnimatePresence>
