@@ -36,11 +36,32 @@ export default function About() {
       >
         <div className="space-y-6">
           <motion.p variants={itemVariants} className="text-lg leading-relaxed text-slate-300">
-            I'm an <span className="text-white font-semibold">AI Engineer</span> dedicated to crafting intelligent systems that solve real-world problems. My passion lies at the intersection of <span className="text-primary italic">Deep Learning</span> and <span className="text-primary italic">Software Engineering</span>.
+            I'm an <span className="text-white font-semibold">AI Engineer</span> with expertise in building <span className="text-primary italic">production-ready LLM applications</span> and <span className="text-primary italic">intelligent automation systems</span>. My work combines deep technical knowledge with a focus on delivering measurable business outcomes.
           </motion.p>
           <motion.p variants={itemVariants} className="text-base leading-relaxed text-slate-400">
-            I specialize in building production-ready LLM applications, from designing complex RAG pipelines to fine-tuning specialized models. I believe in AI that isn't just powerful, but also reliable, interpretable, and user-centric.
+            At ABB, I <span className="text-white">reduced manual reporting effort by 70%</span> through automated ETL pipelines and built analytics platforms serving <span className="text-white">50+ stakeholders</span>. I specialize in RAG systems, multi-modal AI, and deploying ML models that solve real business problems.
           </motion.p>
+
+          <motion.div variants={itemVariants} className="rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-4">
+            <h4 className="mb-2 flex items-center gap-2 text-sm font-bold text-emerald-400">
+              <Zap className="h-4 w-4" />
+              What I Bring to Your Team
+            </h4>
+            <ul className="space-y-1.5 text-sm text-slate-300">
+              <li className="flex items-start gap-2">
+                <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-400" />
+                <span><strong className="text-white">Full-stack AI development</strong>: From data pipelines to deployed APIs</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-400" />
+                <span><strong className="text-white">Business-first mindset</strong>: Every model tied to ROI and KPIs</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-emerald-400" />
+                <span><strong className="text-white">Rapid prototyping</strong>: MVP in days, not weeks</span>
+              </li>
+            </ul>
+          </motion.div>
 
           <motion.div variants={itemVariants} className="grid grid-cols-2 gap-4 pt-4">
             <motion.div
@@ -53,8 +74,8 @@ export default function About() {
                 <Target className="h-4 w-4" />
               </div>
               <div>
-                <h4 className="font-bold text-white text-sm">Visionary</h4>
-                <p className="text-xs text-slate-500">Scaling AI for real impact</p>
+                <h4 className="font-bold text-white text-sm">Impact-Driven</h4>
+                <p className="text-xs text-slate-500">70% efficiency gains</p>
               </div>
             </motion.div>
             <motion.div
@@ -67,8 +88,8 @@ export default function About() {
                 <Zap className="h-4 w-4" />
               </div>
               <div>
-                <h4 className="font-bold text-white text-sm">Efficient</h4>
-                <p className="text-xs text-slate-500">Fast, robust production code</p>
+                <h4 className="font-bold text-white text-sm">Production-Ready</h4>
+                <p className="text-xs text-slate-500">99.9% uptime APIs</p>
               </div>
             </motion.div>
           </motion.div>

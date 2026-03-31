@@ -4,6 +4,7 @@ import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
 import Skills from './components/Skills.jsx'
 import Projects from './components/Projects.jsx'
+import Education from './components/Education.jsx'
 import Experience from './components/Experience.jsx'
 import Contact from './components/Contact.jsx'
 import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react'
@@ -20,8 +21,9 @@ function App() {
         </div>
         <Projects />
         <div className="bg-slate-900/10">
-          <Experience />
+          <Education />
         </div>
+        <Experience />
         <Contact />
       </main>
 
@@ -46,10 +48,9 @@ function App() {
                 AI Engineer specializing in Large Language Models and Generative AI solutions. Building the intelligent web of tomorrow.
               </p>
               <div className="flex gap-4">
-                <motion.a href="#" whileHover={{ scale: 1.2, y: -2 }} className="text-slate-400 transition-colors hover:text-primary"><Github className="h-5 w-5" /></motion.a>
-                <motion.a href="#" whileHover={{ scale: 1.2, y: -2 }} className="text-slate-400 transition-colors hover:text-primary"><Linkedin className="h-5 w-5" /></motion.a>
-                <motion.a href="#" whileHover={{ scale: 1.2, y: -2 }} className="text-slate-400 transition-colors hover:text-primary"><Twitter className="h-5 w-5" /></motion.a>
-                <motion.a href="#" whileHover={{ scale: 1.2, y: -2 }} className="text-slate-400 transition-colors hover:text-primary"><Mail className="h-5 w-5" /></motion.a>
+                <motion.a href="https://github.com/Nikhil383" target="_blank" rel="noreferrer" whileHover={{ scale: 1.2, y: -2 }} className="text-slate-400 transition-colors hover:text-primary"><Github className="h-5 w-5" /></motion.a>
+                <motion.a href="https://www.linkedin.com/in/nikhilmaheshds/" target="_blank" rel="noreferrer" whileHover={{ scale: 1.2, y: -2 }} className="text-slate-400 transition-colors hover:text-primary"><Linkedin className="h-5 w-5" /></motion.a>
+                <motion.a href="mailto:nikhilmahesh89@gmail.com" whileHover={{ scale: 1.2, y: -2 }} className="text-slate-400 transition-colors hover:text-primary"><Mail className="h-5 w-5" /></motion.a>
               </div>
             </motion.div>
 

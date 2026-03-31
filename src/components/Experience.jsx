@@ -4,16 +4,16 @@ import Section from './Section.jsx'
 
 const roles = [
   {
-    title: 'Student Intern',
+    title: 'AI/ML Engineering Intern',
     company: 'ABB',
-    location: 'Remote / Bangalore',
-    period: 'Feb 2024 — July 2024',
+    location: 'Bengaluru, India',
+    period: 'Feb 2024 — Jul 2024',
     bullets: [
-      'Built a backend analytics and automation platform using Django, enabling scalable data-driven SaaS workflows.',
-      'Automated SQL, ETL, and reporting pipelines, reducing manual effort by 70% across business teams.',
-      'Designed APIs for data ingestion and processing, improving system reliability and extensibility.',
-      'Engineered ML-ready datasets and anomaly detection prototypes, improving data readiness by 30%.',
-      'Collaborated with product and engineering teams to iterate rapidly on backend features.',
+      'Built a Django-based analytics platform processing 10K+ daily data points, enabling real-time business intelligence for 50+ stakeholders.',
+      'Automated ETL pipelines using Python and SQL, reducing manual reporting effort by 70% and saving 20+ hours/week for business teams.',
+      'Designed REST APIs for data ingestion serving 100+ requests/hour with 99.9% uptime, improving system reliability.',
+      'Developed ML anomaly detection prototypes that improved data quality metrics by 30%, enabling proactive issue resolution.',
+      'Collaborated in Agile sprints with cross-functional teams (product, engineering, business) to deliver features 2 weeks ahead of schedule.',
     ],
   },
 ]

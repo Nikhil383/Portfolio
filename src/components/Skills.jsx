@@ -4,46 +4,75 @@ import Section from './Section.jsx'
 
 const categories = [
   {
-    name: 'AI & Machine Learning Foundations',
+    name: 'AI & Machine Learning',
     icon: BrainCircuit,
-    items: ['Supervised & Unsupervised Learning', 'Bias-Variance Tradeoff', 'Model Evaluation (ROC, AUC)', 'Feature Engineering', 'Cross-validation', 'Hyperparameter Tuning', 'Statistical Foundations'],
+    items: [
+      { skill: 'Supervised/Unsupervised Learning', level: 'Advanced' },
+      { skill: 'Model Evaluation (ROC, AUC)', level: 'Advanced' },
+      { skill: 'Feature Engineering', level: 'Advanced' },
+      { skill: 'Hyperparameter Tuning', level: 'Intermediate' },
+      { skill: 'Statistical Analysis', level: 'Intermediate' },
+    ],
     color: 'text-purple-400',
   },
   {
     name: 'Deep Learning',
     icon: Layers,
-    items: ['Neural Networks (ANN)', 'CNN (Computer Vision)', 'RNN, LSTM', 'Transformers', 'Attention Mechanism', 'Transfer Learning', 'Fine-tuning models'],
+    items: [
+      { skill: 'Neural Networks (ANN)', level: 'Advanced' },
+      { skill: 'CNN (Computer Vision)', level: 'Advanced' },
+      { skill: 'RNN/LSTM', level: 'Intermediate' },
+      { skill: 'Transformers', level: 'Advanced' },
+      { skill: 'Transfer Learning', level: 'Advanced' },
+    ],
     color: 'text-indigo-400',
   },
   {
     name: 'Generative AI & LLMs',
     icon: MessageSquare,
-    items: ['Large Language Models (LLMs)', 'Prompt Engineering', 'RAG Systems', 'Embeddings', 'Vector Databases', 'Multi-modal AI', 'Image Captioning & VQA'],
+    items: [
+      { skill: 'LLM Fine-tuning', level: 'Advanced' },
+      { skill: 'RAG Systems', level: 'Advanced' },
+      { skill: 'Prompt Engineering', level: 'Advanced' },
+      { skill: 'Vector Databases', level: 'Advanced' },
+      { skill: 'Multi-modal AI', level: 'Intermediate' },
+    ],
     color: 'text-emerald-400',
   },
   {
-    name: 'Computer Vision',
-    icon: Eye,
-    items: ['Image Classification', 'Object Detection', 'Feature Extraction', 'Vision Transformers (ViT)'],
-    color: 'text-blue-400',
+    name: 'Programming & Frameworks',
+    icon: Code2,
+    items: [
+      { skill: 'Python', level: 'Advanced' },
+      { skill: 'PyTorch', level: 'Advanced' },
+      { skill: 'TensorFlow/Keras', level: 'Intermediate' },
+      { skill: 'Hugging Face', level: 'Advanced' },
+      { skill: 'LangChain', level: 'Advanced' },
+    ],
+    color: 'text-cyan-400',
   },
   {
-    name: 'AI System Development',
-    icon: Cpu,
-    items: ['End-to-End ML Pipeline Design', 'Model Training & Evaluation', 'Data Preprocessing', 'Experiment Tracking', 'Scalable Code Design'],
+    name: 'Data Engineering',
+    icon: Database,
+    items: [
+      { skill: 'Pandas/NumPy', level: 'Advanced' },
+      { skill: 'SQL', level: 'Advanced' },
+      { skill: 'ETL Pipelines', level: 'Intermediate' },
+      { skill: 'Data Visualization', level: 'Advanced' },
+    ],
     color: 'text-amber-400',
   },
   {
     name: 'Deployment & MLOps',
     icon: Rocket,
-    items: ['Flask API Deployment', 'Model Serialization', 'Git & Version Control', 'Basic CI/CD', 'Cloud Concepts (AWS/GCP)'],
+    items: [
+      { skill: 'Flask/FastAPI', level: 'Advanced' },
+      { skill: 'Docker', level: 'Intermediate' },
+      { skill: 'Git/GitHub', level: 'Advanced' },
+      { skill: 'CI/CD Basics', level: 'Intermediate' },
+      { skill: 'AWS/GCP', level: 'Beginner' },
+    ],
     color: 'text-rose-400',
-  },
-  {
-    name: 'Programming & Tools',
-    icon: Terminal,
-    items: ['Python', 'NumPy, Pandas', 'Matplotlib / Seaborn', 'VS Code', 'Linux Basics', 'LangChain', 'Hugging Face', 'Docker', 'FAISS / Pinecone'],
-    color: 'text-cyan-400',
   },
 ]
 
@@ -95,17 +124,29 @@ export default function Skills() {
 
             <div className="flex flex-wrap gap-2">
               {category.items.map((item, idx) => (
-                <motion.span
-                  key={item}
+                <motion.div
+                  key={item.skill}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.03 }}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  className="rounded-full bg-slate-800/40 px-3 py-1 text-xs font-medium text-slate-300 transition-colors group-hover:bg-slate-800 group-hover:text-white cursor-default"
+                  className="group/item"
                 >
-                  {item}
-                </motion.span>
+                  <div
+                    className="relative overflow-hidden rounded-full bg-slate-800/40 px-3 py-1.5 transition-colors group-hover/item:bg-slate-800 cursor-default"
+                  >
+                    <span className="text-xs font-medium text-slate-300 group-hover/item:text-white">
+                      {item.skill}
+                    </span>
+                    <span className={`ml-2 rounded px-1.5 py-0.5 text-[10px] font-semibold ${
+                      item.level === 'Advanced' ? 'bg-emerald-500/20 text-emerald-400' :
+                      item.level === 'Intermediate' ? 'bg-amber-500/20 text-amber-400' :
+                      'bg-slate-600/20 text-slate-400'
+                    }`}>
+                      {item.level}
+                    </span>
+                  </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>

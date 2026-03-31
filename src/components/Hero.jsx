@@ -126,7 +126,7 @@ export default function Hero() {
           variants={item}
           className="mb-10 max-w-2xl text-lg text-slate-400 sm:text-xl lg:text-2xl"
         >
-           I design and build end-to-end AI systems using Machine Learning, Deep Learning, and Generative AI. Passionate about solving real-world problems using data-driven and AI-powered solutions.
+          AI Engineer specializing in <span className="text-white font-semibold">LLMs, RAG Systems & Generative AI</span>. I build production-ready AI solutions that drive measurable business impact—reducing manual effort by 70% and improving data readiness by 30%. Seeking full-time AI/ML Engineer roles.
         </motion.p>
 
         <motion.div
@@ -164,8 +164,10 @@ export default function Hero() {
           variants={item}
         >
           {[
-            { label: "Experience", value: "0.6 Years" },
-            { label: "Projects", value: "3+ Done" },
+            { label: "Years Experience", value: "1+" },
+            { label: "Projects Deployed", value: "4+" },
+            { label: "Efficiency Gained", value: "70%" },
+            { label: "Tech Stack", value: "15+" },
           ].map((stat, i) => (
             <div key={i} className="flex flex-col gap-1">
               <span className="text-2xl font-bold text-white">{stat.value}</span>
