@@ -6,14 +6,14 @@ const roles = [
   {
     title: 'Student Intern',
     company: 'ABB',
-    location: 'Remote / Bangalore',
-    period: 'Feb 2024 — July 2024',
+    location: 'Bengaluru, India',
+    period: 'Feb 2024 — Jul 2024',
     bullets: [
-      'Built a backend analytics and automation platform using Django, enabling scalable data-driven SaaS workflows.',
-      'Automated SQL, ETL, and reporting pipelines, reducing manual effort by 70% across business teams.',
-      'Designed APIs for data ingestion and processing, improving system reliability and extensibility.',
-      'Engineered ML-ready datasets and anomaly detection prototypes, improving data readiness by 30%.',
-      'Collaborated with product and engineering teams to iterate rapidly on backend features.',
+      'Developed a robot performance monitoring web application using Django',
+      'Implemented Natural Language Processing (NLP) techniques for multilingual support',
+      'Built functionality to convert and display content in multiple languages',
+      'Designed backend logic for efficient data handling and performance tracking',
+      'Improved user accessibility by enabling language translation features',
     ],
   },
 ]
@@ -66,10 +66,28 @@ export default function Experience() {
 
                   <ul className="space-y-3">
                     {role.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex gap-3 text-sm leading-relaxed text-slate-400">
-                        <div className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary/40" />
+                      <motion.li
+                        key={bIdx}
+                        className="flex gap-3 text-sm leading-relaxed text-slate-400"
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: bIdx * 0.1 }}
+                      >
+                        <motion.div
+                          className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-primary/40"
+                          animate={{
+                            scale: [1, 1.5, 1],
+                            opacity: [0.4, 0.8, 0.4],
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            delay: bIdx * 0.2,
+                          }}
+                        />
                         <span>{bullet}</span>
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </div>
