@@ -2,6 +2,7 @@ import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
 import Skills from './components/Skills.jsx'
+import Education from './components/Education.jsx'
 import Projects from './components/Projects.jsx'
 import Experience from './components/Experience.jsx'
 import Contact from './components/Contact.jsx'
@@ -17,11 +18,14 @@ function App() {
         <div className="bg-slate-900/10">
           <Skills />
         </div>
-        <Projects />
+        <Education />
         <div className="bg-slate-900/10">
-          <Experience />
+          <Projects />
         </div>
-        <Contact />
+        <Experience />
+        <div className="bg-slate-900/10">
+          <Contact />
+        </div>
       </main>
 
       <footer className="relative mt-20 border-t border-slate-800/60 bg-slate-950/80 px-4 py-12 backdrop-blur-md sm:px-6 lg:px-8">
