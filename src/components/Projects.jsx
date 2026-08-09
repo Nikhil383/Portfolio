@@ -27,10 +27,10 @@ const projects = [
     demo: 'https://image-caption-ejph.onrender.com',
   },
   {
-    title: 'Agentic RAG Document Q&A App',
+    title: 'Hybrid RAG Document Q&A App',
     period: '2024-Present',
     description:
-      'Built a RAG-based Q&A system that answers questions about documents using AI.',
+      'Built a Hybrid(Multimodal + Agentic) RAG-based Q&A system that answers questions about documents using AI.',
     tech: ['React', 'Python', 'FastAPI', 'ChromaDB', 'LLM'],
     icon: Search,
     color: 'from-emerald-500/20 to-teal-500/20',

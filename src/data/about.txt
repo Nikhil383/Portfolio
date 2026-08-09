@@ -1,0 +1,34 @@
+Full name: Nikhil Mahesh.
+Nikhil Mahesh is a AI Engineer based in Bengaluru, India.
+Bio: I design and build end-to-end AI systems that make complex information easier to work with. My focus is LLM applications, RAG pipelines, multimodal systems, and dependable software around them.
+Current focus areas: LLMs, RAG, Multimodal AI, Agentic Systems.
+Nikhil Mahesh is available for full-time roles and project work.
+
+Email: nikhilmahesh89@gmail.com.
+GitHub: https://github.com/Nikhil383.
+LinkedIn: https://www.linkedin.com/in/nikhilmaheshds/.
+Resume: https://docs.google.com/document/d/1x2bC3BnoxFD0whm1eHkz2zlWMmXn72McfxMUJlWJfiI/edit?usp=sharing.
+
+Projects:
+- Visual Question Answering: Answers natural-language questions from image content. Built with Python · PyTorch · Gemini · Flask. Source: https://github.com/Nikhil383/Visual_Question_Answer. Live demo: https://multimodal-ai-50ad.onrender.com.
+- Multimodal Image Captioning: Generates useful natural-language descriptions from images. Built with Python · LangChain · Gemini · Flask. Source: https://github.com/Nikhil383/Image-Caption. Live demo: https://image-caption-ejph.onrender.com.
+- Agentic RAG Document Q&A: Grounded document question answering with retrieval. Built with React · FastAPI · ChromaDB · LLMs. Source: https://github.com/Nikhil383/RAG-Document-Q-A-App. No live demo available.
+- Personal AI Data Analyst: Data analysis and visualisation through a focused AI workflow. Built with Python · Streamlit · Pandas · Matplotlib. Source: https://github.com/Nikhil383/Personal-AI-Data-Analyst. No live demo available.
+
+Experience:
+Student Intern at ABB (Feb 2024 — Jul 2024, Bengaluru, India). Built a robot performance monitoring application using Django, including NLP-powered multilingual content support and backend logic for efficient data handling.
+
+Skills:
+- AI / ML: Python, PyTorch, Transformers, Hugging Face, RAG.
+- Generative AI: LLMs, LangChain, Embeddings, Vector databases, Multimodal AI.
+- Engineering: FastAPI, Flask, React, Docker, Git.
+- Data & Cloud: Pandas, SQL, AWS, Azure, Linux.
+
+AI / RAG Concepts:
+Retrieval-Augmented Generation (RAG) is a pattern that grounds LLM answers in external documents. The pipeline: load sources, chunk them, embed each chunk into a vector, store in a vector database, retrieve the top-k most similar chunks for a query, inject them as context for the LLM, and generate a grounded answer.
+A large language model (LLM) is a neural network trained on large text corpora to predict the next token. Modern LLMs are used for chat, reasoning, code, summarization, and tool use. Common stacks: Hugging Face Transformers, LangChain, LlamaIndex, and provider APIs like Gemini, OpenAI, and Anthropic.
+An agentic AI system uses an LLM as a router: it inspects the user query, decides which tool to call (web search, vector retrieval, SQL, calculator, code execution, or APIs), gathers results, and synthesises a final response. Agentic RAG is the same idea applied to retrieval: the agent picks the best retrieval strategy per query.
+Multimodal AI combines vision and language. Typical tasks: image captioning, visual question answering, document understanding, OCR. Common building blocks: CLIP-style vision encoders, BLIP, Gemini, GPT-4V, and open-source models like LLaVA.
+Embeddings map text (or images) to dense vectors such that semantically similar items are close in vector space. They power semantic search, RAG, clustering, and recommendation. Popular models: sentence-transformers, OpenAI text-embedding-3, Cohere embed-v3.
+Vector databases store embeddings and run approximate nearest-neighbour search. Common choices: Chroma, FAISS, Pinecone, Weaviate, Qdrant, pgvector.
+LangChain and LlamaIndex are popular frameworks for composing LLM applications: prompts, chains, agents, retrievers, and tools. They integrate with most vector databases and model providers.

@@ -1,0 +1,134 @@
+/* Visual polish layer for the macOS desktop theme. */
+
+/* Subtle vignette over wallpaper to push icons forward */
+.desktop::before {
+  content: '';
+  position: absolute;
+  inset: 28px 0 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,.35) 100%);
+}
+[data-theme='light'] .desktop::before {
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,.08) 100%);
+}
+
+/* Glass enhancement on the menubar */
+.menubar {
+  box-shadow: 0 1px 0 var(--line), 0 6px 20px rgba(0,0,0,.12);
+}
+
+/* Welcome gradient title polish */
+.welcome h1 em {
+  background-size: 220% auto;
+}
+
+/* Window: glassmorphism border + highlight */
+.os-window {
+  background: linear-gradient(155deg, rgba(28,28,36,.86), rgba(15,16,23,.92));
+  border-color: rgba(255,255,255,.12);
+}
+[data-theme='light'] .os-window {
+  background: linear-gradient(155deg, rgba(255,255,255,.86), rgba(245,245,247,.92));
+  border-color: rgba(0,0,0,.08);
+}
+.os-window.is-active {
+  border-color: rgba(10,132,255,.4);
+}
+
+/* Title bar */
+.window-titlebar {
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  backdrop-filter: blur(8px);
+}
+
+/* Hover lift for cards */
+.project-card, .safari-card, .skill-core {
+  transition: transform .25s var(--ease), background .2s, border-color .2s, box-shadow .25s;
+}
+.project-card:hover, .safari-card:hover, .skill-core:hover {
+  box-shadow: 0 14px 36px rgba(0,0,0,.35);
+}
+
+/* Terminal prompt focus */
+.terminal-prompt:focus-within {
+  background: rgba(94,92,230,.08);
+}
+
+
+
+/* Control center tile glass */
+.cc-tile {
+  background: linear-gradient(135deg, rgba(94,92,230,.32), rgba(94,92,230,.12));
+}
+.cc-tile-wifi, .cc-tile-bt, .cc-tile-focus {
+  background: linear-gradient(135deg, var(--cc-c1, #0a84ff), var(--cc-c2, #5e5ce6));
+}
+.cc-tile-wifi { --cc-c1: #0a84ff; --cc-c2: #5e5ce6; }
+.cc-tile-bt { --cc-c1: #34c759; --cc-c2: #0a84ff; }
+.cc-tile-focus { --cc-c1: #5e5ce6; --cc-c2: #bf5af2; }
+
+/* Spotlight accent */
+.spotlight-item:hover {
+  background: linear-gradient(90deg, rgba(94,92,230,.22), rgba(10,132,255,.12));
+}
+
+/* Welcome action buttons */
+.btn-primary, .btn-ghost {
+  box-shadow: 0 8px 22px rgba(0,0,0,.18);
+}
+
+/* Boot screen logo gentle pulse */
+.boot-logo {
+  animation: bootPulse 2.4s ease-in-out infinite;
+}
+@keyframes bootPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+/* Window content scroll */
+.window-content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,.12) transparent;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ------------------------ RESPONSIVE ------------------------ */
+
+@media (max-width: 900px) {
+  .desktop-icons { grid-template-columns: repeat(2, 88px); gap: 10px; right: 14px; top: 40px; }
+  .desktop-icon-glyph { width: 46px; height: 46px; }
+  .desktop-icon small { display: none; }
+  .welcome { left: 30px; right: 30px; top: 12vh; max-width: none; }
+  .welcome h1 { font-size: clamp(1.9rem, 7vw, 3rem); }
+  .welcome-stats { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: 1fr; }
+  .skill-cores { grid-template-columns: 1fr; }
+  .safari-grid { grid-template-columns: repeat(2, 1fr); }
+  .agent-graph { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .os-window { inset: 36px 8px 90px !important; width: auto !important; left: 8px !important; top: 36px !important; max-height: calc(100dvh - 130px) !important; }
+  .desktop-icons { display: none; }
+  .menubar { padding: 0 10px; }
+  .menubar-item { display: none; }
+  .menubar-item:nth-child(2) { display: inline; }
+  .welcome { left: 16px; right: 16px; }
+  .welcome-actions { gap: 8px; }
+  .btn-primary, .btn-ghost { padding: 10px 14px; font-size: 13px; }
+
+  .control-center { right: 8px; width: 260px; }
+  .spotlight-wrap { padding-top: 10vh; }
+  .cc-toggle { right: 8px; }
+  .restart-btn { right: 8px; bottom: 80px; }
+  .min-bar { right: 8px; bottom: 100px; }
+}
