@@ -24,7 +24,7 @@ const APPS = [
 ]
 
 const BOOT_LINES = [
-  ['NikhilOS 3.0', 'booting…'],
+  ['PORTFOLIOOS ', 'booting…'],
   ['Loading AI modules', 'OK'],
   ['Mounting /projects', 'OK'],
   ['Indexing knowledge base', 'OK'],
@@ -501,7 +501,7 @@ const COMMANDS_HELP = [
 
 function TerminalApp({ onLaunch }) {
   const [history, setHistory] = useState(() => [
-    { kind: 'sys', text: 'NikhilOS Terminal 3.0 — local assistant enabled.' },
+    { kind: 'sys', text: 'PORTFOLIOOS Terminal 3.0 — local assistant enabled.' },
     { kind: 'sys', text: 'Retrieval: in-browser RAG · LLM: Gemini 2.0 Flash.' },
     { kind: 'sys', text: hasGeminiKey() ? 'Gemini key: loaded from GEMINI_API_KEY.' : 'No GEMINI_API_KEY set — using RAG-only mode. Run `set key YOUR_KEY` to enable Gemini.' },
     { kind: 'sys', text: 'Ask anything. Try `help`, `whoami`, or just type a question.' },
