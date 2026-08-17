@@ -13,7 +13,6 @@ A premium, highly interactive portfolio showcasing expertise in AI, Machine Lear
 - **Frontend**: React 19, Vite, Tailwind CSS
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
-- **Deployment**: Render (Blueprint included)
 
 ## 📦 Deployment on Render
 
