@@ -522,21 +522,20 @@ function TerminalApp({ onLaunch }) {
     setBusy(true)
     append([{ kind: 'you', text: `nikhil@portfolio ~ % ${question}` }])
 
-    // 1. Send the full about.txt as context for Gemini.
-    const context = aboutText
+    // 1. Retrieve the most relevant chunks using RAG
+    const retrieved = retrieve(question, 5)
+    const ragContext = buildContext(retrieved)
+    const context = ragContext ? `${ragContext}\n\n[Full Profile Reference]\n${aboutText}` : aboutText
 
-    // 2. Try Gemini. If no key, or Gemini errors → fall back to a snippet
-    //    taken directly from about.txt (still file-grounded).
+    // 2. Query Gemini with the grounded context (or fallback to snippet extraction if unavailable)
     const { text, source } = await askGemini({ question, context })
 
-    // 3. Honour "dont know" if the model produced nothing.
+    // 3. Output response
     const finalText = text && text.trim().length > 0 ? text : RAG_FALLBACK_MESSAGE
 
     const tag = source === 'gemini'
-      ? '— answered with Gemini 2.0 Flash (grounded in about.txt)'
-      : source === 'fallback'
-        ? '— Gemini unavailable; answered from about.txt'
-        : ''
+      ? '— answered with Gemini (grounded in portfolio knowledge base)'
+      : '— answered from local knowledge base'
 
     append([
       ...(tag ? [{ kind: 'sys', text: tag }] : []),

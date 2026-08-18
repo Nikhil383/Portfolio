@@ -5,7 +5,7 @@
 
 import { pickRelevantSnippet } from './rag'
 
-const MODEL = 'gemini-3.6-flash'
+const MODEL = 'gemini-2.5-flash'
 const ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`
 
 function getKey() {
@@ -30,38 +30,35 @@ export function setGeminiKey(key) {
 }
 
 /**
- * Ask Gemini a question grounded in the provided context (full about.txt).
+ * Ask Gemini a question grounded in the provided context.
  * Returns { text, source: 'gemini' | 'fallback' }.
  *
  * - If the model is reachable and produces a non-empty answer, source='gemini'.
  * - If Gemini is unreachable (no key, network, auth, or empty output),
  *   source='fallback' and the answer is the most relevant snippet extracted
- *   directly from the provided context — still file-grounded.
+ *   directly from the provided context.
  */
 export async function askGemini({ question, context }) {
   const key = getKey()
   const safeContext = context || ''
 
-  const systemInstruction = `You are the local assistant for Nikhil Mahesh's portfolio.
+  const systemInstruction = `You are Nikhil Mahesh's AI portfolio assistant.
+Answer questions warmly, accurately, and naturally based on the provided portfolio context.
 
-You will be given a single document called CONTEXT, taken verbatim from the file about.txt.
+Guidelines:
+1. Base your answers primarily on the facts in the CONTEXT (Nikhil's background, projects, skills, experience, contact details, AI concepts).
+2. Generate friendly, well-structured, clear responses (bullet points, short paragraphs, or concise answers as appropriate).
+3. If the user asks something completely outside Nikhil's portfolio or general AI/tech knowledge that cannot be answered from the context, politely state that you do not have that information.
+4. Keep links, contact info, and project names accurate to what is in the context.`
 
-Strict rules:
-1. Use ONLY information that is explicitly present in CONTEXT.
-2. If CONTEXT does not contain the answer, reply with exactly: dont know
-3. Never use outside knowledge, even if you "know" the answer.
-4. Never invent emails, links, dates, employers, project names, technologies, or numbers.
-5. Quote or paraphrase only what CONTEXT says. Keep answers concise (1-6 short lines).
-6. If the user asks something unrelated to Nikhil's portfolio, reply: dont know`
-
-  const userPrompt = `CONTEXT (verbatim from about.txt):
+  const userPrompt = `CONTEXT:
 """
 ${safeContext || '(empty context)'}
 """
 
 User question: ${question}
 
-Answer (from CONTEXT only):`
+Response:`
 
   const fallback = () => {
     const snippet = pickRelevantSnippet(question, safeContext, 600)
@@ -83,16 +80,10 @@ Answer (from CONTEXT only):`
           },
         ],
         generationConfig: {
-          temperature: 0.2,
-          topP: 0.9,
-          maxOutputTokens: 512,
+          temperature: 0.4,
+          topP: 0.95,
+          maxOutputTokens: 1024,
         },
-        safetySettings: [
-          { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
-          { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' },
-          { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_NONE' },
-          { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' },
-        ],
       }),
     })
 
