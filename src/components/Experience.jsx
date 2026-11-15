@@ -15,6 +15,24 @@ const roles = [
       'Designed backend logic for efficient data handling and performance tracking',
       'Improved user accessibility by enabling language translation features',
     ],
+    title: 'AI/ML Intern',
+    company: 'Nexvia Technologies',
+    location: 'Hyderabad, India',
+    period: 'Oct 2026 — Nov 2026',
+    bullets: [
+      'Develop Python-based components for AI/ML applications using machine learning and deep learning',
+      'Implement data preprocessing and feature engineering workflows to prepare datasets for model development',
+      'Evaluate machine learning models and manage code using Git and GitHub for version control.',
+    ],
+    title: 'Research Analyst Intern',
+    company: 'Digital Visibility Concepts(DVC)',
+    location: 'Bengaluru, India',
+    period: 'Oct 2026 — Present',
+    bullets: [
+      'Analyzed AI-generated search results using ChatGPT, Gemini, Claude, and Google AI Mode to evaluate AI visibility and information retrieval.',
+      'Researched AI visibility across platforms and performed keyword research using tools like Ahrefs and SEMrush for competitive analysis',
+      'Executed Python-based data processing and automation workflows using Excel/CSV for data collection and validation',
+    ],
   },
 ]
 
