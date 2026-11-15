@@ -16,7 +16,20 @@ Projects:
 - Personal AI Data Analyst: Data analysis and visualisation through a focused AI workflow. Built with Python · Streamlit · Pandas · Matplotlib. Source: https://github.com/Nikhil383/Personal-AI-Data-Analyst. No live demo available.
 
 Experience:
-Student Intern at ABB (Feb 2024 — Jul 2024, Bengaluru, India). Built a robot performance monitoring application using Django, including NLP-powered multilingual content support and backend logic for efficient data handling.
+- Research Analyst Intern at Digital Visibility Concepts (DVC) (Oct 2026 — Present, Bengaluru, India). Analyzed AI-generated search results across ChatGPT, Gemini, Claude, and Google AI Mode to evaluate AI visibility and information retrieval. Performed competitive keyword research with Ahrefs and SEMrush, and automated data processing with Python.
+- AI/ML Intern at Nexvia Technologies (Oct 2026 — Nov 2026, Hyderabad, India). Developed Python-based components for AI/ML applications using machine learning and deep learning, engineered preprocessing pipelines, and evaluated models using Git/GitHub.
+- Student Intern at ABB (Feb 2024 — Jul 2024, Bengaluru, India). Built a robot performance monitoring application using Django, including NLP-powered multilingual content support and backend logic for efficient data handling.
+
+Education:
+- M.Tech in Artificial Intelligence and Data Science from Amrita Vishwa Vidyapeetham, Bengaluru (2022 — 2024, CGPA: 7.0). Specialization in AI & Data Science, advanced coursework in ML, DL, and NLP.
+- B.Tech in Computer Science and Engineering from Gyan Ganga Institute of Technology and Science, Jabalpur (2018 — 2022, CGPA: 8.34).
+
+Recruiter FAQ & Why Hire Nikhil:
+- Why hire Nikhil: Proven hands-on track record in building end-to-end AI applications, from custom RAG architectures and Multimodal AI (VQA, Image Captioning) to production Python microservices. Holds an M.Tech in AI & Data Science and has 3 practical internship experiences (DVC, Nexvia Technologies, and ABB).
+- Roles sought: AI Engineer, Machine Learning Engineer, Generative AI Engineer, Full-Stack AI Developer.
+- Availability: Actively open and available for full-time roles, contracts, and high-impact AI projects.
+- Relocation & Work mode: Based in Bengaluru, open to in-office, hybrid, and remote roles.
+- Strengths: Rapid prototyping to production, strong grounding in LLM internals, prompt engineering, vector databases (ChromaDB, FAISS), embeddings, PyTorch, and clean software architecture.
 
 Skills:
 - AI / ML: Python, PyTorch, Transformers, Hugging Face, RAG.

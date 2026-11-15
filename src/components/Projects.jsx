@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ExternalLink, Github, FolderOpen, Layers, Bot, Image as ImageIcon, Search } from 'lucide-react'
+import { ExternalLink, Github, FolderOpen, Layers, Bot, Image as ImageIcon, Search, BarChart3 } from 'lucide-react'
 import Section from './Section.jsx'
 import { cn } from '../lib/utils'
 
@@ -41,10 +41,10 @@ const projects = [
     title: 'Personal AI Data Analyst',
     period: '2024-Present',
     description:
-      'Designed and deployed a Personal AI Data Analyst web application for high-precision data analysis and visualization.',
+      'Designed and deployed a Personal AI Data Analyst web application for high-precision data analysis and interactive visualization.',
     tech: ['Streamlit', 'Python', 'Pandas', 'Matplotlib'],
-    icon: Search,
-    color: 'from-emerald-500/20 to-teal-500/20',
+    icon: BarChart3,
+    color: 'from-amber-500/20 to-orange-500/20',
     github: 'https://github.com/Nikhil383/Personal-AI-Data-Analyst.git',
     demo: '#',
   },

@@ -53,12 +53,47 @@ export const projects = [
 
 export const experience = [
   {
+    company: 'Digital Visibility Concepts (DVC)',
+    role: 'Research Analyst Intern',
+    period: 'Oct 2026 — Present',
+    location: 'Bengaluru, India',
+    summary:
+      'Analyzed AI-generated search results across LLM platforms (ChatGPT, Gemini, Claude, Google AI Mode) to evaluate visibility and information retrieval. Conducted competitive and keyword research with Ahrefs and SEMrush, and automated data processing with Python and Excel/CSV.',
+  },
+  {
+    company: 'Nexvia Technologies',
+    role: 'AI/ML Intern',
+    period: 'Oct 2026 — Nov 2026',
+    location: 'Hyderabad, India',
+    summary:
+      'Developed Python-based components for AI/ML applications using machine learning and deep learning. Implemented data preprocessing and feature engineering pipelines, evaluated model performance, and maintained version control with Git/GitHub.',
+  },
+  {
     company: 'ABB',
     role: 'Student Intern',
     period: 'Feb 2024 — Jul 2024',
     location: 'Bengaluru, India',
     summary:
       'Built a robot performance monitoring application using Django, including NLP-powered multilingual content support and backend logic for efficient data handling.',
+  },
+]
+
+export const education = [
+  {
+    degree: 'Master of Technology (M.Tech)',
+    field: 'Artificial Intelligence and Data Science',
+    institution: 'Amrita Vishwa Vidyapeetham',
+    location: 'Bengaluru, Karnataka',
+    period: '2022 — 2024',
+    grade: 'CGPA : 7.0',
+  },
+  {
+    degree: 'Bachelor of Technology (B.Tech)',
+    field: 'Computer Science and Engineering',
+    institution: 'Gyan Ganga Institute of Technology and Science',
+    location: 'Jabalpur, MP',
+    period: '2018 — 2022',
+    grade: 'CGPA : 8.34',
   },
 ]
 

@@ -9,7 +9,7 @@
 //   4. Inject them as context for the LLM (Gemini)
 //   5. If the LLM returns nothing useful, show "Info not provided".
 
-import { profile, projects, experience, skillGroups } from '../data/portfolio'
+import { profile, projects, experience, skillGroups, education } from '../data/portfolio'
 
 // Build a flat list of retrievable chunks.
 const chunks = []
@@ -84,6 +84,34 @@ experience.forEach((e, i) => {
     source: 'experience.md',
     text: `${e.role} at ${e.company} (${e.period}, ${e.location}). ${e.summary}`,
   })
+})
+
+// Education
+if (Array.isArray(education)) {
+  education.forEach((edu, i) => {
+    chunks.push({
+      id: `education-${i}`,
+      source: 'education.md',
+      text: `${edu.degree} in ${edu.field} from ${edu.institution} (${edu.period}, ${edu.location}). ${edu.grade}`,
+    })
+  })
+}
+
+// Recruiter FAQ & Hiring
+chunks.push({
+  id: 'recruiter-why-hire',
+  source: 'recruiter_faq.md',
+  text: 'Why hire Nikhil: Strong hands-on engineering track record in building end-to-end AI applications (LLM systems, RAG architectures, Multimodal vision-language models, and FastAPI/Flask backends). Holds an M.Tech in AI & Data Science and has 3 completed/active internships at Digital Visibility Concepts (DVC), Nexvia Technologies, and ABB.',
+})
+chunks.push({
+  id: 'recruiter-availability',
+  source: 'recruiter_faq.md',
+  text: 'Availability: Nikhil is actively open and available for full-time roles as an AI Engineer, Machine Learning Engineer, Generative AI Engineer, and technical consulting. He is based in Bengaluru, India and open to on-site, hybrid, and remote opportunities.',
+})
+chunks.push({
+  id: 'recruiter-roles',
+  source: 'recruiter_faq.md',
+  text: 'Target roles: AI Engineer, Machine Learning Engineer, LLM / Generative AI Developer, Full-Stack AI Engineer.',
 })
 
 // Skills
@@ -204,13 +232,202 @@ export function buildContext(retrieved) {
 }
 
 // Detect whether the user's query is asking for a fact that isn't covered.
-const FALLBACK_MSG = 'dont know'
-
-export const RAG_FALLBACK_MESSAGE = FALLBACK_MSG
+export const RAG_FALLBACK_MESSAGE =
+  "I couldn't find a direct answer in Nikhil's portfolio. Try asking about his 3 internships (DVC, Nexvia, ABB), projects, tech stack, education, or contact details."
 
 // Heuristic: if no chunk scored > 0, the knowledge base has nothing relevant.
 export function hasRelevantContext(retrieved) {
-  return retrieved.length > 0 && retrieved[0].score > 0
+  return Array.isArray(retrieved) && retrieved.length > 0 && retrieved[0].score > 0
+}
+
+/**
+ * Intelligent, grounded RAG synthesizer for the terminal.
+ * Provides structured, recruiter-ready responses for common questions
+ * even when running purely offline / in-browser without external APIs.
+ */
+export function generateRagAnswer(question, retrieved = [], fullText = '') {
+  const q = (question || '').toLowerCase().trim()
+
+  // 1. Experience & Internships
+  if (
+    q.includes('experience') ||
+    q.includes('intern') ||
+    q.includes('work') ||
+    q.includes('company') ||
+    q.includes('companies') ||
+    q.includes('abb') ||
+    q.includes('nexvia') ||
+    q.includes('dvc') ||
+    q.includes('digital visibility')
+  ) {
+    return [
+      "Here is Nikhil's work and internship experience:",
+      '',
+      '• Research Analyst Intern — Digital Visibility Concepts (DVC) (Oct 2026 — Present | Bengaluru, India)',
+      '  - Analyzed AI-generated search results across ChatGPT, Gemini, Claude, and Google AI Mode.',
+      '  - Researched AI platform visibility and performed competitive keyword analysis via Ahrefs & SEMrush.',
+      '  - Executed Python-based automation and data collection pipelines.',
+      '',
+      '• AI/ML Intern — Nexvia Technologies (Oct 2026 — Nov 2026 | Hyderabad, India)',
+      '  - Developed Python-based AI/ML components utilizing machine learning and deep learning.',
+      '  - Implemented end-to-end data preprocessing and feature engineering workflows.',
+      '  - Evaluated ML models and managed code version control with Git/GitHub.',
+      '',
+      '• Student Intern — ABB (Feb 2024 — Jul 2024 | Bengaluru, India)',
+      '  - Developed a robot performance monitoring web application using Django.',
+      '  - Implemented Natural Language Processing (NLP) techniques for multilingual translation.',
+      '  - Designed robust backend logic for performance tracking and data ingestion.',
+    ].join('\n')
+  }
+
+  // 2. Why hire Nikhil / Availability / Target roles
+  if (
+    q.includes('why hire') ||
+    q.includes('hire') ||
+    q.includes('recruit') ||
+    q.includes('available') ||
+    q.includes('availability') ||
+    q.includes('role') ||
+    q.includes('relocate') ||
+    q.includes('full-time') ||
+    q.includes('full time')
+  ) {
+    return [
+      'Why Hire Nikhil Mahesh for Your Engineering Team:',
+      '',
+      '• Production AI Experience: Hands-on background building LLM applications, RAG pipelines, and Multimodal systems (VQA, Image Captioning).',
+      '• Solid Academic Grounding: M.Tech in Artificial Intelligence & Data Science from Amrita Vishwa Vidyapeetham.',
+      '• 3 Industry Internships: Practical track record spanning AI visibility research (DVC), ML engineering (Nexvia), and enterprise web/NLP systems (ABB).',
+      '• Modern Tech Stack: Python, PyTorch, Transformers, LangChain, FastAPI, Flask, React, ChromaDB, and Docker.',
+      '• Actively Available: Open to full-time AI Engineer, ML Engineer, and GenAI developer roles (Bengaluru, hybrid, or remote).',
+    ].join('\n')
+  }
+
+  // 3. Projects
+  if (
+    q.includes('project') ||
+    q.includes('portfolio') ||
+    q.includes('build') ||
+    q.includes('built') ||
+    q.includes('app') ||
+    q.includes('vqa') ||
+    q.includes('caption') ||
+    q.includes('analyst')
+  ) {
+    return [
+      "Nikhil has built 4 key AI engineering projects:",
+      '',
+      '1. Visual Question Answering (VQA)',
+      '   - Answers natural language questions from image content.',
+      '   - Stack: Python · PyTorch · Hugging Face · Transformers · Gemini · Flask',
+      '   - Demo: https://multimodal-ai-50ad.onrender.com | Source: https://github.com/Nikhil383/Visual_Question_Answer',
+      '',
+      '2. Multimodal Image Captioning Engine',
+      '   - Generates natural-language image captions combining vision & language models.',
+      '   - Stack: Python · LangChain · Gemini AI · Flask',
+      '   - Demo: https://image-caption-ejph.onrender.com | Source: https://github.com/Nikhil383/Image-Caption',
+      '',
+      '3. Agentic RAG Document Q&A App',
+      '   - Grounded document question-answering with hybrid retrieval and intelligent routing.',
+      '   - Stack: React · Python · FastAPI · ChromaDB · LLMs',
+      '   - Source: https://github.com/Nikhil383/RAG-Document-Q-A-App',
+      '',
+      '4. Personal AI Data Analyst',
+      '   - High-precision data analysis and interactive visualization.',
+      '   - Stack: Streamlit · Python · Pandas · Matplotlib',
+      '   - Source: https://github.com/Nikhil383/Personal-AI-Data-Analyst',
+    ].join('\n')
+  }
+
+  // 4. Skills & Tech Stack
+  if (
+    q.includes('skill') ||
+    q.includes('tech') ||
+    q.includes('stack') ||
+    q.includes('language') ||
+    q.includes('python') ||
+    q.includes('framework') ||
+    q.includes('tool')
+  ) {
+    return [
+      "Nikhil's Core Technical Skills:",
+      '',
+      '• AI & Machine Learning: Python, PyTorch, Transformers, Hugging Face, Supervised/Unsupervised Learning, Feature Engineering, Model Evaluation (ROC, AUC).',
+      '• Generative AI & LLMs: Large Language Models (LLMs), RAG Systems, Vector Databases (ChromaDB, FAISS, Pinecone), Embeddings, Multimodal AI, LangChain, Prompt Engineering.',
+      '• Engineering & Backend: FastAPI, Flask, React, Docker, Git/GitHub, REST APIs.',
+      '• Data & Cloud: Pandas, NumPy, SQL, Matplotlib, Linux, Cloud concepts (AWS / Azure / GCP).',
+    ].join('\n')
+  }
+
+  // 5. Education
+  if (
+    q.includes('education') ||
+    q.includes('degree') ||
+    q.includes('college') ||
+    q.includes('university') ||
+    q.includes('study') ||
+    q.includes('studied') ||
+    q.includes('cgpa') ||
+    q.includes('m.tech') ||
+    q.includes('b.tech')
+  ) {
+    return [
+      "Nikhil's Academic Background:",
+      '',
+      '• Master of Technology (M.Tech) in Artificial Intelligence and Data Science',
+      '  - Amrita Vishwa Vidyapeetham, Bengaluru (2022 — 2024)',
+      '  - CGPA: 7.0 | Advanced coursework in Machine Learning, Deep Learning, and NLP.',
+      '',
+      '• Bachelor of Technology (B.Tech) in Computer Science and Engineering',
+      '  - Gyan Ganga Institute of Technology and Science, Jabalpur (2018 — 2022)',
+      '  - CGPA: 8.34',
+    ].join('\n')
+  }
+
+  // 6. Contact & Socials
+  if (
+    q.includes('contact') ||
+    q.includes('email') ||
+    q.includes('linkedin') ||
+    q.includes('github') ||
+    q.includes('resume') ||
+    q.includes('reach') ||
+    q.includes('phone')
+  ) {
+    return [
+      'Contact Details for Nikhil Mahesh:',
+      '',
+      '• Email: nikhilmahesh89@gmail.com',
+      '• LinkedIn: https://www.linkedin.com/in/nikhilmaheshds/',
+      '• GitHub: https://github.com/Nikhil383',
+      '• Resume: https://docs.google.com/document/d/1x2bC3BnoxFD0whm1eHkz2zlWMmXn72McfxMUJlWJfiI/edit?usp=sharing',
+      '• Location: Bengaluru, India',
+    ].join('\n')
+  }
+
+  // 7. If retrieved chunks exist with positive score
+  if (Array.isArray(retrieved) && retrieved.length > 0 && retrieved[0].score > 0) {
+    const topChunks = retrieved.slice(0, 3)
+    return topChunks.map((c) => `• ${c.text}`).join('\n\n')
+  }
+
+  // 8. Fallback snippet from text
+  const snippet = pickRelevantSnippet(question, fullText, 500)
+  if (snippet && snippet.length > 20) {
+    return snippet
+  }
+
+  // 9. Default Recruiter Prompt
+  return [
+    "I am grounded in Nikhil Mahesh's AI engineering portfolio.",
+    'You can ask me:',
+    '  • "What is his work experience and internships?" (DVC, Nexvia, ABB)',
+    '  • "What projects has he built?" (VQA, Image Captioning, Agentic RAG, Data Analyst)',
+    '  • "What is his tech stack?" (Python, PyTorch, LLMs, RAG, FastAPI)',
+    '  • "Why should we hire Nikhil?"',
+    '  • "What is his educational background?" (M.Tech in AI & Data Science)',
+    '  • "How can I contact Nikhil?"',
+  ].join('\n')
 }
 
 // -------------------- Snippet extraction from a single text document --------------------

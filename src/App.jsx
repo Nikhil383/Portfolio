@@ -484,27 +484,28 @@ const COMMANDS_HELP = [
   'ls                           list entries',
   'open [app]                   open an app (terminal, projects, about, resume, web, ai-lab, skills)',
   'skills                       open system monitor',
-  'experience / about           open about',
+  'experience                   view work & internship experience',
   'resume                       open resume',
   'github | linkedin | mail     open contact link',
   'clear                        clear the terminal',
-  'rag [question]               show retrieved context (debug)',
+  'rag [question]               inspect retrieved RAG chunks (debug)',
   'set key [api-key]            set Gemini API key at runtime',
   '',
-  'Anything else is sent to the local LLM (Gemini + RAG).',
-  'Examples:',
-  '  what projects has Nikhil built?',
-  '  explain RAG in simple terms',
-  "  what's his email?",
-  '  which company did he intern at?',
+  'Recruiter & AI Questions (RAG-powered):',
+  '  • "tell me about Nikhil\'s work experience and internships"',
+  '  • "what projects has Nikhil built?"',
+  '  • "why should we hire Nikhil?"',
+  '  • "what is his tech stack and skills?"',
+  '  • "what is his educational background?"',
+  '  • "what are RAG and Multimodal AI?"',
 ]
 
 function TerminalApp({ onLaunch }) {
   const [history, setHistory] = useState(() => [
     { kind: 'sys', text: 'PORTFOLIO Terminal 3.0 — local assistant enabled.' },
     { kind: 'sys', text: 'Retrieval: in-browser RAG · LLM: Gemini 2.0 Flash.' },
-    { kind: 'sys', text: hasGeminiKey() ? 'Gemini key: loaded from GEMINI_API_KEY.' : 'No GEMINI_API_KEY set — using RAG-only mode. Run `set key YOUR_KEY` to enable Gemini.' },
-    { kind: 'sys', text: 'Ask anything. Try `help`, `whoami`, or just type a question.' },
+    { kind: 'sys', text: hasGeminiKey() ? 'Gemini API: Connected (grounded in portfolio RAG).' : 'RAG Assistant Active (in-browser). Optional: run `set key YOUR_KEY` to link Gemini.' },
+    { kind: 'sys', text: 'Recruiters & Visitors: Ask about internships, projects, tech stack, or why to hire Nikhil!' },
   ])
   const [input, setInput] = useState('')
   const [busy, setBusy] = useState(false)
@@ -523,19 +524,19 @@ function TerminalApp({ onLaunch }) {
     append([{ kind: 'you', text: `nikhil@portfolio ~ % ${question}` }])
 
     // 1. Retrieve the most relevant chunks using RAG
-    const retrieved = retrieve(question, 5)
+    const retrieved = retrieve(question, 6)
     const ragContext = buildContext(retrieved)
     const context = ragContext ? `${ragContext}\n\n[Full Profile Reference]\n${aboutText}` : aboutText
 
-    // 2. Query Gemini with the grounded context (or fallback to snippet extraction if unavailable)
-    const { text, source } = await askGemini({ question, context })
+    // 2. Query Gemini with the grounded context (or fallback to structured RAG generation if unavailable)
+    const { text, source } = await askGemini({ question, context, retrieved })
 
     // 3. Output response
     const finalText = text && text.trim().length > 0 ? text : RAG_FALLBACK_MESSAGE
 
     const tag = source === 'gemini'
-      ? '— answered with Gemini (grounded in portfolio knowledge base)'
-      : '— answered from local knowledge base'
+      ? '— answered with Gemini 2.0 Flash (grounded in portfolio RAG)'
+      : '— answered with in-browser RAG (grounded in portfolio knowledge base)'
 
     append([
       ...(tag ? [{ kind: 'sys', text: tag }] : []),
@@ -568,7 +569,8 @@ function TerminalApp({ onLaunch }) {
     if (lower === 'whoami') { append([{ kind: 'out', text: `${profile.name} — ${profile.role} building with LLMs, RAG & multimodal AI.` }]); return }
     if (lower === 'ls') { append([{ kind: 'out', text: 'projects/  about.txt  skills/  resume.pdf  contact.txt' }]); return }
     if (lower === 'skills') { onLaunch('skills'); append([{ kind: 'out', text: 'Opening System Monitor…' }]); return }
-    if (lower === 'experience' || lower === 'about') { onLaunch('about'); append([{ kind: 'out', text: 'Opening About…' }]); return }
+    if (lower === 'about') { onLaunch('about'); append([{ kind: 'out', text: 'Opening About…' }]); return }
+    if (lower === 'experience') { askLLM('summarize your work experience and internships'); return }
     if (lower === 'resume') { onLaunch('resume'); append([{ kind: 'out', text: 'Opening Resume…' }]); return }
     if (lower === 'github') { window.open(profile.github, '_blank'); append([{ kind: 'out', text: 'Opening GitHub…' }]); return }
     if (lower === 'linkedin') { window.open(profile.linkedin, '_blank'); append([{ kind: 'out', text: 'Opening LinkedIn…' }]); return }
@@ -957,7 +959,7 @@ export default function App() {
             <div className="welcome-stats">
               <div><b>{projects.length}</b><span>projects</span></div>
               <div><b>{skillGroups.reduce((n, g) => n + g.items.length, 0)}</b><span>tech items</span></div>
-              <div><b>1</b><span>internship</span></div>
+              <div><b>{experience.length}</b><span>internships</span></div>
               <div><b>∞</b><span>questions to ask</span></div>
             </div>
           </motion.section>

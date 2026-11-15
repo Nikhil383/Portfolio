@@ -55,7 +55,7 @@ export default function About() {
               <div className="space-y-4 pt-4 border-t border-slate-800/50">
                 {[
                   { label: "Location", value: "Bengaluru, India", icon: MapPin },
-                  { label: "Focus", value: "LLMs, NLP, MLOps", icon: Target },
+                  { label: "Focus", value: "LLMs, RAG, Multimodal AI", icon: Target },
                   { label: "Availability", value: "Full-time / Projects", icon: Zap },
                 ].map((item, i) => (
                   <div key={i} className="flex items-center justify-between text-sm">

@@ -5,7 +5,7 @@ import Section from './Section.jsx'
 const roles = [
   {
     title: 'Research Analyst Intern',
-    company: 'Digital Visibility Concepts(DVC)',
+    company: 'Digital Visibility Concepts (DVC)',
     location: 'Bengaluru, India',
     period: 'Oct 2026 — Present',
     bullets: [
@@ -54,7 +54,7 @@ export default function Experience() {
         <div className="space-y-12">
           {roles.map((role, idx) => (
             <motion.div
-              key={role.title}
+              key={`${role.company}-${role.title}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
